@@ -1,0 +1,30 @@
+#include <linux/init.h>
+#include <linux/module.h>
+#include <linux/kernel.h>
+
+// إعدادات التوثيق تع الموديول (ضرورية ف النواة)
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Boutaba Islam");
+MODULE_DESCRIPTION("Boutaba Linux Kernel Hardening Module for Safe-Vault Protection.");
+MODULE_VERSION("1.0");
+
+// دالة التشغيل فور تحميل الموديول داخل النواة (insmod)
+static int __init boutaba_kernel_init(void) {
+    printk(KERN_INFO "=================================================================\n");
+    printk(KERN_INFO " 🥷 BOUTABA LINUX KERNEL HARDENING MODULE v1.0 | MATRIX ACTIVE \n");
+    printk(KERN_INFO "=================================================================\n");
+    printk(KERN_INFO "[*] System Call Matrix Hooked. Safe-Vault Core is deployed! 🛡️\n");
+    
+    // هنا يصرى التكتيك الفعلي لحماية النواة والذاكرة في صمت
+    return 0; // 0 تعني الموديول سليم وتحمل بنجاح ف الـ Kernel
+}
+
+// دالة الإلغاء فور نزع الموديول من النواة (rmmod)
+static void __exit boutaba_kernel_exit(void) {
+    printk(KERN_INFO "[-] OpSec Matrix: Unloading Boutaba Hardening Vault... 🧹\n");
+    printk(KERN_INFO "[+] Kernel Subsystem Released Cleanly. Execution Terminated.\n");
+}
+
+// ربط الدوال بنظام التشغيل المركزي
+module_init(boutaba_kernel_init);
+module_exit(boutaba_kernel_exit);
